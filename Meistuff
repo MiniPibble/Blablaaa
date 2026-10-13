@@ -1,869 +1,571 @@
--- /// 1. LOADER SCRIPT /// --
-shared.LoaderTitle = "Subscribe to Official_Yuii";
-shared.LoaderKeyFrames = {
-    [1] = {
-        0.5,
-        10
-    },
-    [2] = {
-        0.5,
-        30
-    },
-    [3] = {
-        0.5,
-        60
-    },
-    [4] = {
-        0.5,
-        100
-    }
-};
-local v2 = {
-    LoaderData = {
-        Name = shared.LoaderTitle or "A Loader",
-        Colors = shared.LoaderColors or {
-            Main = Color3.fromRGB(0, 0, 0),
-            Topic = Color3.fromRGB(200, 200, 200),
-            Title = Color3.fromRGB(255, 255, 255),
-            LoaderBackground = Color3.fromRGB(40, 40, 40),
-            LoaderSplash = Color3.fromRGB(130, 36, 212)
-        }
-    },
-    Keyframes = shared.LoaderKeyFrames or {
-        [1] = {
-            0.5,
-            10
-        },
-        [2] = {
-            0.5,
-            30
-        },
-        [3] = {
-            0.5,
-            60
-        },
-        [4] = {
-            0.5,
-            100
-        }
-    }
-};
-local v3 = {
-    [1] = "",
-    [2] = "",
-    [3] = "",
-    [4] = ""
-};
-function TweenObject(v178, v179, v180)
-    game.TweenService:Create(v178, TweenInfo.new(v179, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), v180):Play();
-end
-function CreateObject(v181, v182)
-    local v183 = Instance.new(v181);
-    local v184;
-    for v416, v417 in pairs(v182) do
-        if (v416 ~= "Parent") then
-            v183[v416] = v417;
-        else
-            v184 = v417;
-        end
-    end
-    v183.Parent = v184;
-    return v183;
-end
-local function v4(v186, v187)
-    local v188 = Instance.new("UICorner");
-    v188.CornerRadius = UDim.new(0, v186);
-    v188.Parent = v187;
-end
-local v5 = CreateObject("ScreenGui", {
-    Name = "Core",
-    Parent = game.CoreGui
-});
-local v6 = CreateObject("Frame", {
-    Name = "Main",
-    Parent = v5,
-    BackgroundColor3 = v2.LoaderData.Colors.Main,
-    BorderSizePixel = 0,
-    ClipsDescendants = true,
-    Position = UDim2.new(0.5, 0, 0.5, 0),
-    AnchorPoint = Vector2.new(0.5, 0.5),
-    Size = UDim2.new(0, 0, 0, 0)
-});
-v4(12, v6);
-local v7 = CreateObject("ImageLabel", {
-    Name = "UserImage",
-    Parent = v6,
-    BackgroundTransparency = 1,
-    Image = "rbxassetid://129346791031417",
-    Position = UDim2.new(0, 15, 0, 10),
-    Size = UDim2.new(0, 50, 0, 50)
-});
-v4(25, v7);
-local v8 = CreateObject("TextLabel", {
-    Name = "UserName",
-    Parent = v6,
-    BackgroundTransparency = 1,
-    Text = "Youtube: Official_Yuii",
-    Position = UDim2.new(0, 75, 0, 10),
-    Size = UDim2.new(0, 200, 0, 50),
-    Font = Enum.Font.GothamBold,
-    TextColor3 = v2.LoaderData.Colors.Title,
-    TextSize = 14,
-    TextXAlignment = Enum.TextXAlignment.Left
-});
-local v9 = CreateObject("TextLabel", {
-    Name = "Top",
-    TextTransparency = 1,
-    Parent = v6,
-    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-    BackgroundTransparency = 1,
-    Position = UDim2.new(0, 30, 0, 70),
-    Size = UDim2.new(0, 301, 0, 20),
-    Font = Enum.Font.Gotham,
-    Text = "Loader",
-    TextColor3 = v2.LoaderData.Colors.Topic,
-    TextSize = 10,
-    TextXAlignment = Enum.TextXAlignment.Left
-});
-local v10 = CreateObject("TextLabel", {
-    Name = "Title",
-    Parent = v6,
-    TextTransparency = 1,
-    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-    BackgroundTransparency = 1,
-    Position = UDim2.new(0, 30, 0, 90),
-    Size = UDim2.new(0, 301, 0, 46),
-    Font = Enum.Font.Gotham,
-    RichText = true,
-    Text = "<b>" .. v2.LoaderData.Name .. "</b>",
-    TextColor3 = v2.LoaderData.Colors.Title,
-    TextSize = 14,
-    TextXAlignment = Enum.TextXAlignment.Left
-});
-local v11 = CreateObject("Frame", {
-    Name = "BG",
-    Parent = v6,
-    AnchorPoint = Vector2.new(0.5, 0),
-    BackgroundTransparency = 1,
-    BackgroundColor3 = v2.LoaderData.Colors.LoaderBackground,
-    BorderSizePixel = 0,
-    Position = UDim2.new(0.5, 0, 0, 70),
-    Size = UDim2.new(0.8500000238418579, 0, 0, 24)
-});
-v4(8, v11);
-local v12 = CreateObject("Frame", {
-    Name = "Progress",
-    Parent = v11,
-    BackgroundColor3 = v2.LoaderData.Colors.LoaderSplash,
-    BackgroundTransparency = 1,
-    BorderSizePixel = 0,
-    Size = UDim2.new(0, 0, 0, 24)
-});
-v4(8, v12);
-local v13 = CreateObject("TextLabel", {
-    Name = "StepLabel",
-    Parent = v6,
-    BackgroundTransparency = 1,
-    Position = UDim2.new(0.5, 0, 1, - 25),
-    Size = UDim2.new(1, - 20, 0, 20),
-    Font = Enum.Font.Gotham,
-    Text = "",
-    TextColor3 = v2.LoaderData.Colors.Topic,
-    TextSize = 14,
-    TextXAlignment = Enum.TextXAlignment.Center,
-    AnchorPoint = Vector2.new(0.5, 0.5)
-});
-function UpdateStepText(v191)
-    v13.Text = v3[v191] or "" ;
-end
-function UpdatePercentage(v193, v194)
-    TweenObject(v12, 0.5, {
-        Size = UDim2.new(v193 / 100, 0, 0, 24)
-    });
-    UpdateStepText(v194);
-end
-TweenObject(v6, 0.25, {
-    Size = UDim2.new(0, 346, 0, 121)
-});
-task.wait();
-TweenObject(v9, 0.25, {
-    TextTransparency = 0
-});
-TweenObject(v10, 0.25, {
-    TextTransparency = 0
-});
-TweenObject(v11, 0.25, {
-    BackgroundTransparency = 0
-});
-TweenObject(v12, 0.25, {
-    BackgroundTransparency = 0
-});
-for v195, v196 in pairs(v2.Keyframes) do
-    task.wait(v196[1]);
-    UpdatePercentage(v196[2], v195);
-end
-UpdatePercentage(100, 4);
-TweenObject(v9, 0.25, {
-    TextTransparency = 1
-});
-TweenObject(v10, 0.25, {
-    TextTransparency = 1
-});
-TweenObject(v11, 0.25, {
-    BackgroundTransparency = 1
-});
-TweenObject(v12, 0.25, {
-    BackgroundTransparency = 1
-});
-task.wait(0.25);
-TweenObject(v6, 0.15, {
-    Size = UDim2.new(0, 0, 0, 0)
-});
-task.wait(0.1);
-v5:Destroy();
+--[[
+    Official Yui Code Script List
+    Premium Black UI | 16:9 Semi-Small | 10 Left Tabs | Execute per tab
 
+    HOW TO ADD SCRIPTS:
+    Put your script link in Url = "..." for each tab below.
+    (Or use Run = function() ... end for custom code.)
+]]
 
--- /// 2. OFFICIAL YUI SCRIPT LIST MAIN UI /// --
-local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
-local LocalPlayer = Players.LocalPlayer
-local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+local Players = game:GetService("Players")
 
--- Remove existing GUI
-if PlayerGui:FindFirstChild("YuiScriptList") then
-    PlayerGui:FindFirstChild("YuiScriptList"):Destroy()
-end
+--------------------------------------------------------------------
+-- ✏️ EDIT HERE: Tab names, descriptions and script links
+--------------------------------------------------------------------
+local SCRIPTS = {
+    {Name = "LevithonHub", Desc = "Press Execute to load LevithonHub.", Url = "https://raw.githubusercontent.com/MiniPibble/Levithon/refs/heads/main/Boo"},
+    {Name = "InstinctHub", Desc = "Press Execute to load InstinctHub.", Url = "https://raw.githubusercontent.com/MiniPibble/Instinct/refs/heads/main/Bu"},
+    {Name = "LoveHub", Desc = "Press Execute to load LoveHub.", Url = "https://raw.githubusercontent.com/MiniPibble/Hubu/refs/heads/main/Love"},
+    {Name = "CursedHub", Desc = "Press Execute to load CursedHub.", Url = "https://raw.githubusercontent.com/MiniPibble/CursedHub/refs/heads/main/Bu"},
+    {Name = "ExeCodeSniper", Desc = "Press Execute to load ExeCodeSniper.", Url = "https://raw.githubusercontent.com/MiniPibble/Execodesniper-/refs/heads/main/Ggwp"},
+    {Name = "Tab 6",  Desc = "Description for Tab 6.",  Url = "PUT_TAB_6_LINK_HERE"},
+    {Name = "Tab 7",  Desc = "Description for Tab 7.",  Url = "PUT_TAB_7_LINK_HERE"},
+    {Name = "Tab 8",  Desc = "Description for Tab 8.",  Url = "PUT_TAB_8_LINK_HERE"},
+    {Name = "Tab 9",  Desc = "Description for Tab 9.",  Url = "PUT_TAB_9_LINK_HERE"},
+    {Name = "Tab 10", Desc = "Description for Tab 10.", Url = "PUT_TAB_10_LINK_HERE"},
+}
+--------------------------------------------------------------------
+-- 📝 EDIT HERE: "NEW FEATURES" notes (shown in the popup)
+--------------------------------------------------------------------
+local NOTES_TITLE = "NEW FEATURES"
+local NOTES = {
+    "ADD LOVEHUB CODE SNIPER",
+    "ADD CURSEDHUB CODE SNIPER",
+    "ADD EXEHUB CODE SNIPER",
+    "ADD LEVITHONHUB CODE SNIPER",
+    "ADD INSTINCTHUB CODE SNIPER",
+}
+--------------------------------------------------------------------
 
--- Colors
-local C_BG       = Color3.fromRGB(10, 10, 10)
-local C_PANEL    = Color3.fromRGB(13, 13, 13)
-local C_TITLEBAR = Color3.fromRGB(18, 18, 18)
-local C_BORDER   = Color3.fromRGB(40, 40, 40)
-local C_GOLD     = Color3.fromRGB(200, 169, 110)
-local C_DIM      = Color3.fromRGB(70, 70, 70)
-local C_CODEBG   = Color3.fromRGB(8, 8, 8)
-local C_GREEN    = Color3.fromRGB(40, 200, 64)
-local C_YELLOW   = Color3.fromRGB(254, 188, 46)
-local C_TAB_ACT  = Color3.fromRGB(22, 22, 22)
-local C_TEXT     = Color3.fromRGB(90, 90, 90)
+local TITLE = "Official Yui Code Script List"
 
--- Tab Data
-local TabColors = {
-    Color3.fromRGB(220, 80,  80),   -- 1 AceCodeSniper    = Red
-    Color3.fromRGB(100, 180, 255),  -- 2 GammaHubSniper   = Blue
-    Color3.fromRGB(80,  220, 140),  -- 3 SourcesHubSniper = Green
-    Color3.fromRGB(180, 100, 255),  -- 4 SyntaxHubSniper  = Purple
-    Color3.fromRGB(255, 160, 40),   -- 5 SpyderHubSniper  = Orange
-    Color3.fromRGB(255, 80,  180),  -- 6 WxnaHubSniper    = Pink
-    Color3.fromRGB(200, 169, 110),  -- 7 Placeholder      = Gold
-    Color3.fromRGB(200, 169, 110),  -- 8 Placeholder      = Gold
-    Color3.fromRGB(200, 169, 110),  -- 9 Placeholder      = Gold
-    Color3.fromRGB(200, 169, 110),  -- 10 Placeholder     = Gold
+local C = {
+    Bg      = Color3.fromRGB(6, 6, 6),
+    Top     = Color3.fromRGB(12, 12, 12),
+    Side    = Color3.fromRGB(10, 10, 10),
+    Card    = Color3.fromRGB(17, 17, 17),
+    Hover   = Color3.fromRGB(25, 25, 25),
+    Active  = Color3.fromRGB(33, 33, 33),
+    Stroke  = Color3.fromRGB(42, 42, 42),
+    White   = Color3.fromRGB(255, 255, 255),
+    Text    = Color3.fromRGB(240, 240, 240),
+    SubText = Color3.fromRGB(135, 135, 135),
+    Good    = Color3.fromRGB(90, 220, 130),
+    Bad     = Color3.fromRGB(235, 80, 80),
+    Warn    = Color3.fromRGB(245, 190, 70),
 }
 
-local Tabs = {
-    { Name = "AceCodeSniper",    Code = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/MiniPibble/Ace/refs/heads/main/Code"))()' },
-    { Name = "GammaHubSniper",   Code = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/MiniPibble/GammaHuby/refs/heads/main/Sniper"))()' },
-    { Name = "SourcesHubSniper", Code = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/MiniPibble/SourcesHuby/refs/heads/main/Sources"))()' },
-    { Name = "SyntaxHubSniper",  Code = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/MiniPibble/VisSynstaxual/refs/heads/main/Visual"))()' },
-    { Name = "SpyderHubSniper",  Code = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/MiniPibble/Githubi/refs/heads/main/Kk"))()' },
-    { Name = "WxnaHubSniper",    Code = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/MiniPibble/Wxna/refs/heads/main/Wxna"))()' },
-    { Name = "Placeholder 7",    Code = "" },
-    { Name = "Placeholder 8",    Code = "" },
-    { Name = "Placeholder 9",    Code = "" },
-    { Name = "Placeholder 10",   Code = "" },
-}
-
-local ActiveTab = 1
-local TabButtons = {}
-
--- Helper functions
-local function MakeCorner(parent, radius)
-    local c = Instance.new("UICorner")
-    c.CornerRadius = UDim.new(0, radius or 6)
-    c.Parent = parent
-    return c
+local function new(class, props, parent)
+    local o = Instance.new(class)
+    for k, v in pairs(props) do o[k] = v end
+    if parent then o.Parent = parent end
+    return o
+end
+local function corner(r, p) return new("UICorner", {CornerRadius = UDim.new(0, r)}, p) end
+local function stroke(c, t, p, tr)
+    return new("UIStroke", {Color = c, Thickness = t or 1, Transparency = tr or 0,
+        ApplyStrokeMode = Enum.ApplyStrokeMode.Border}, p)
+end
+local function tween(o, t, props)
+    TweenService:Create(o, TweenInfo.new(t, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), props):Play()
 end
 
-local function MakeStroke(parent, color, thick)
-    local s = Instance.new("UIStroke")
-    s.Color = color or C_BORDER
-    s.Thickness = thick or 1
-    s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    s.Parent = parent
-    return s
+local function getParent()
+    local ok, ui = pcall(function() return gethui and gethui() end)
+    if ok and ui then return ui end
+    local ok2, core = pcall(function() return game:GetService("CoreGui") end)
+    if ok2 and core then return core end
+    return Players.LocalPlayer:WaitForChild("PlayerGui")
 end
 
-local function MakeLine(parent, pos, horizontal)
-    local l = Instance.new("Frame")
-    l.BorderSizePixel = 0
-    l.BackgroundColor3 = C_BORDER
-    if horizontal then
-        l.Size = UDim2.new(1, 0, 0, 1)
-        l.Position = pos or UDim2.new(0,0,0,0)
-    else
-        l.Size = UDim2.new(0, 1, 1, 0)
-        l.Position = pos or UDim2.new(0,0,0,0)
+local parent = getParent()
+if parent:FindFirstChild("YuiCodeScriptList") then parent.YuiCodeScriptList:Destroy() end
+
+local Gui = new("ScreenGui", {
+    Name = "YuiCodeScriptList", ResetOnSpawn = false,
+    ZIndexBehavior = Enum.ZIndexBehavior.Sibling, IgnoreGuiInset = true,
+}, parent)
+
+-- 16:9 semi small
+local FULL = UDim2.fromOffset(480, 270)
+local MINI = UDim2.fromOffset(480, 36)
+
+local Main = new("Frame", {
+    Name = "Main", Size = UDim2.fromOffset(0, 0),
+    Position = UDim2.new(0.5, 0, 0.5, 0), AnchorPoint = Vector2.new(0.5, 0.5),
+    BackgroundColor3 = C.Bg, BorderSizePixel = 0, ClipsDescendants = true,
+}, Gui)
+corner(12, Main)
+
+-- animated premium border
+local border = stroke(C.White, 1.5, Main)
+local borderGrad = new("UIGradient", {
+    Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+        ColorSequenceKeypoint.new(0.25, Color3.fromRGB(25, 25, 25)),
+        ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
+        ColorSequenceKeypoint.new(0.75, Color3.fromRGB(25, 25, 25)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255)),
+    }),
+}, border)
+task.spawn(function()
+    local t0 = os.clock()
+    while Main.Parent do
+        borderGrad.Rotation = ((os.clock() - t0) * 40) % 360
+        task.wait(0.03)
     end
-    l.Parent = parent
-    return l
+end)
+
+----------------------------------------------------------------
+-- Top bar
+----------------------------------------------------------------
+local Top = new("Frame", {Size = UDim2.new(1, 0, 0, 36), BackgroundColor3 = C.Top, BorderSizePixel = 0}, Main)
+new("Frame", {Size = UDim2.new(1, 0, 0, 1), Position = UDim2.new(0, 0, 1, -1), BackgroundColor3 = C.Stroke, BorderSizePixel = 0}, Top)
+
+local dot = new("Frame", {Size = UDim2.fromOffset(7, 7), Position = UDim2.new(0, 13, 0.5, -3),
+    BackgroundColor3 = C.White, BorderSizePixel = 0}, Top)
+corner(4, dot)
+task.spawn(function()
+    while dot.Parent do
+        tween(dot, 0.9, {BackgroundTransparency = 0.6}); task.wait(0.9)
+        tween(dot, 0.9, {BackgroundTransparency = 0}); task.wait(0.9)
+    end
+end)
+
+local titleLbl = new("TextLabel", {
+    Text = TITLE, Font = Enum.Font.GothamBlack, TextSize = 13, TextColor3 = C.White,
+    TextXAlignment = Enum.TextXAlignment.Left, BackgroundTransparency = 1,
+    Position = UDim2.new(0, 28, 0, 0), Size = UDim2.new(1, -170, 1, 0),
+}, Top)
+new("UIGradient", {Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(150, 150, 150)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255)),
+})}, titleLbl)
+
+local function topButton(txt, xOff, hoverColor)
+    local b = new("TextButton", {
+        Text = txt, Font = Enum.Font.GothamBold, TextSize = 15, TextColor3 = C.SubText,
+        BackgroundColor3 = C.Card, AutoButtonColor = false, BorderSizePixel = 0,
+        Size = UDim2.fromOffset(24, 24), Position = UDim2.new(1, xOff, 0.5, -12),
+    }, Top)
+    corner(7, b)
+    stroke(C.Stroke, 1, b)
+    b.MouseEnter:Connect(function() tween(b, 0.15, {BackgroundColor3 = hoverColor, TextColor3 = C.White}) end)
+    b.MouseLeave:Connect(function() tween(b, 0.15, {BackgroundColor3 = C.Card, TextColor3 = C.SubText}) end)
+    return b
+end
+local CloseBtn = topButton("×", -34, C.Bad)
+local MinBtn = topButton("–", -62, C.Active)
+
+----------------------------------------------------------------
+-- Body: sidebar (LEFT) + content
+----------------------------------------------------------------
+local Body = new("Frame", {
+    Size = UDim2.new(1, 0, 1, -36), Position = UDim2.new(0, 0, 0, 36),
+    BackgroundTransparency = 1, ClipsDescendants = true,
+}, Main)
+
+local Side = new("Frame", {Size = UDim2.new(0, 112, 1, 0), BackgroundColor3 = C.Side, BorderSizePixel = 0}, Body)
+new("Frame", {Size = UDim2.new(0, 1, 1, 0), Position = UDim2.new(1, -1, 0, 0), BackgroundColor3 = C.Stroke, BorderSizePixel = 0}, Side)
+
+new("TextLabel", {
+    Text = "SCRIPTS", Font = Enum.Font.GothamBold, TextSize = 9, TextColor3 = C.SubText,
+    TextXAlignment = Enum.TextXAlignment.Left, BackgroundTransparency = 1,
+    Position = UDim2.new(0, 14, 0, 9), Size = UDim2.new(1, -20, 0, 12),
+}, Side)
+
+-- scrollable tab list (10 tabs)
+local TabList = new("ScrollingFrame", {
+    Position = UDim2.new(0, 6, 0, 26), Size = UDim2.new(1, -12, 1, -32),
+    BackgroundTransparency = 1, BorderSizePixel = 0, ScrollBarThickness = 2,
+    ScrollBarImageColor3 = C.White, CanvasSize = UDim2.new(0, 0, 0, 0),
+    AutomaticCanvasSize = Enum.AutomaticSize.Y, ScrollingDirection = Enum.ScrollingDirection.Y,
+}, Side)
+new("UIListLayout", {Padding = UDim.new(0, 4), SortOrder = Enum.SortOrder.LayoutOrder}, TabList)
+new("UIPadding", {PaddingRight = UDim.new(0, 4)}, TabList)
+
+local Content = new("Frame", {
+    Position = UDim2.new(0, 113, 0, 0), Size = UDim2.new(1, -113, 1, 0), BackgroundTransparency = 1,
+}, Body)
+
+local pages, tabButtons = {}, {}
+
+local function selectTab(i)
+    for idx, page in ipairs(pages) do
+        local on = (idx == i)
+        page.Visible = on
+        tween(tabButtons[idx].Btn, 0.18, {BackgroundColor3 = on and C.Active or C.Side, TextColor3 = on and C.White or C.SubText})
+        tween(tabButtons[idx].Bar, 0.18, {BackgroundTransparency = on and 0 or 1})
+    end
 end
 
--- ScreenGui
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "YuiScriptList"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.IgnoreGuiInset = true
-ScreenGui.Parent = PlayerGui
+for i, data in ipairs(SCRIPTS) do
+    -- tab button
+    local btn = new("TextButton", {
+        Text = "   " .. data.Name, Font = Enum.Font.GothamMedium, TextSize = 12, TextColor3 = C.SubText,
+        TextXAlignment = Enum.TextXAlignment.Left, BackgroundColor3 = C.Side, AutoButtonColor = false,
+        BorderSizePixel = 0, Size = UDim2.new(1, 0, 0, 28), LayoutOrder = i,
+    }, TabList)
+    corner(7, btn)
+    local bar = new("Frame", {Size = UDim2.new(0, 3, 0, 14), Position = UDim2.new(0, 2, 0.5, -7),
+        BackgroundColor3 = C.White, BackgroundTransparency = 1, BorderSizePixel = 0}, btn)
+    corner(2, bar)
+    tabButtons[i] = {Btn = btn, Bar = bar}
 
--- Main Frame (16:9)
-local Main = Instance.new("Frame")
-Main.Name = "Main"
-Main.AnchorPoint = Vector2.new(0.5, 0.5)
-Main.Position = UDim2.new(0.5, 0, 0.5, 0)
-Main.Size = UDim2.new(0, 480, 0, 270)
-Main.BackgroundColor3 = C_BG
-Main.BorderSizePixel = 0
-Main.ClipsDescendants = true
-Main.Parent = ScreenGui
-MakeCorner(Main, 10)
-MakeStroke(Main, C_BORDER, 1.5)
+    -- page
+    local page = new("Frame", {Name = data.Name, Size = UDim2.new(1, 0, 1, 0), BackgroundTransparency = 1, Visible = false}, Content)
+    pages[i] = page
 
--- Drag logic
-local dragging = false
-local dragStart = nil
-local startPos = nil
+    btn.MouseEnter:Connect(function() if not page.Visible then tween(btn, 0.12, {BackgroundColor3 = C.Hover}) end end)
+    btn.MouseLeave:Connect(function() if not page.Visible then tween(btn, 0.12, {BackgroundColor3 = C.Side}) end end)
+    btn.MouseButton1Click:Connect(function() selectTab(i) end)
 
-local function getVP()
-    return workspace.CurrentCamera.ViewportSize
+    new("TextLabel", {
+        Text = data.Name, Font = Enum.Font.GothamBold, TextSize = 18, TextColor3 = C.White,
+        TextXAlignment = Enum.TextXAlignment.Left, BackgroundTransparency = 1,
+        Position = UDim2.new(0, 14, 0, 10), Size = UDim2.new(1, -28, 0, 22),
+    }, page)
+    new("TextLabel", {
+        Text = data.Desc, Font = Enum.Font.Gotham, TextSize = 11, TextColor3 = C.SubText,
+        TextXAlignment = Enum.TextXAlignment.Left, TextYAlignment = Enum.TextYAlignment.Top,
+        TextWrapped = true, BackgroundTransparency = 1,
+        Position = UDim2.new(0, 14, 0, 34), Size = UDim2.new(1, -28, 0, 34),
+    }, page)
+
+    -- HOW TO USE (code block style)
+    local how = new("Frame", {
+        Position = UDim2.new(0, 14, 0, 76), Size = UDim2.new(1, -28, 0, 60),
+        BackgroundColor3 = C.Card, BorderSizePixel = 0,
+    }, page)
+    corner(8, how)
+    stroke(C.Stroke, 1, how)
+    new("TextLabel", {Text = "```", Font = Enum.Font.Code, TextSize = 11, TextColor3 = C.SubText,
+        TextXAlignment = Enum.TextXAlignment.Left, BackgroundTransparency = 1,
+        Position = UDim2.new(0, 10, 0, 4), Size = UDim2.new(1, -20, 0, 12)}, how)
+    new("TextLabel", {
+        Text = "HOW TO USE? SELECT THE TAB U WANT AND EXECUTE IT", Font = Enum.Font.Code, TextSize = 11,
+        TextWrapped = true, TextColor3 = C.Text, TextXAlignment = Enum.TextXAlignment.Left,
+        BackgroundTransparency = 1, Position = UDim2.new(0, 10, 0, 17), Size = UDim2.new(1, -20, 0, 26),
+    }, how)
+    new("TextLabel", {Text = "```", Font = Enum.Font.Code, TextSize = 11, TextColor3 = C.SubText,
+        TextXAlignment = Enum.TextXAlignment.Left, BackgroundTransparency = 1,
+        Position = UDim2.new(0, 10, 1, -16), Size = UDim2.new(1, -20, 0, 12)}, how)
+
+    -- Execute button
+    local exec = new("TextButton", {
+        Text = "Execute", Font = Enum.Font.GothamBold, TextSize = 13, TextColor3 = Color3.fromRGB(0, 0, 0),
+        BackgroundColor3 = C.White, AutoButtonColor = false, BorderSizePixel = 0,
+        Position = UDim2.new(0, 14, 1, -46), Size = UDim2.new(1, -28, 0, 34),
+    }, page)
+    corner(8, exec)
+    new("UIGradient", {Color = ColorSequence.new(Color3.fromRGB(255, 255, 255), Color3.fromRGB(205, 205, 205)), Rotation = 90}, exec)
+    exec.MouseEnter:Connect(function() tween(exec, 0.15, {BackgroundColor3 = Color3.fromRGB(220, 220, 220)}) end)
+    exec.MouseLeave:Connect(function() tween(exec, 0.15, {BackgroundColor3 = C.White}) end)
+
+    local busy = false
+    exec.MouseButton1Click:Connect(function()
+        if busy then return end
+        busy = true
+
+        local hasUrl = type(data.Url) == "string" and data.Url ~= "" and not data.Url:find("^PUT_")
+        local label, color
+        if data.Run then
+            local ok, err = pcall(data.Run)
+            if ok then label, color = "Executed ✓", C.Good else warn("[Yui] " .. tostring(err)); label, color = "Error ✕", C.Bad end
+        elseif hasUrl then
+            local ok, err = pcall(function() loadstring(game:HttpGet(data.Url))() end)
+            if ok then label, color = "Executed ✓", C.Good else warn("[Yui] " .. tostring(err)); label, color = "Error ✕", C.Bad end
+        else
+            label, color = "No script set", C.Warn
+        end
+
+        exec.Text = label
+        tween(exec, 0.2, {BackgroundColor3 = color})
+        task.wait(1.5)
+        exec.Text = "Execute"
+        tween(exec, 0.2, {BackgroundColor3 = C.White})
+        busy = false
+    end)
 end
 
-Main.Position = UDim2.new(0, (getVP().X - 480) / 2, 0, (getVP().Y - 270) / 2)
-Main.AnchorPoint = Vector2.new(0, 0)
+----------------------------------------------------------------
+-- NEW FEATURES notes (popup)
+----------------------------------------------------------------
+local Overlay = new("Frame", {
+    Size = UDim2.new(1, 0, 1, 0), BackgroundColor3 = Color3.fromRGB(0, 0, 0),
+    BackgroundTransparency = 0.25, BorderSizePixel = 0, Active = true, ZIndex = 10, Visible = true,
+}, Content)
 
-local function attachDrag(bar)
-    bar.InputBegan:Connect(function(inp)
-        if inp.UserInputType == Enum.UserInputType.MouseButton1
-        or inp.UserInputType == Enum.UserInputType.Touch then
-            dragging = true
-            dragStart = Vector2.new(inp.Position.X, inp.Position.Y)
-            startPos = Vector2.new(Main.Position.X.Offset, Main.Position.Y.Offset)
+local Card = new("Frame", {
+    Size = UDim2.new(1, -28, 1, -24), Position = UDim2.new(0, 14, 0, 12),
+    BackgroundColor3 = C.Card, BorderSizePixel = 0,
+}, Overlay)
+corner(10, Card)
+stroke(C.White, 1, Card, 0.6)
+
+new("TextLabel", {
+    Text = NOTES_TITLE, Font = Enum.Font.GothamBlack, TextSize = 15, TextColor3 = C.White,
+    TextXAlignment = Enum.TextXAlignment.Left, BackgroundTransparency = 1,
+    Position = UDim2.new(0, 14, 0, 10), Size = UDim2.new(1, -90, 0, 20),
+}, Card)
+
+local newTag = new("TextLabel", {
+    Text = "UPDATE", Font = Enum.Font.GothamBold, TextSize = 9, TextColor3 = C.Bg,
+    BackgroundColor3 = C.White, BorderSizePixel = 0,
+    Position = UDim2.new(1, -66, 0, 13), Size = UDim2.fromOffset(52, 16),
+}, Card)
+corner(8, newTag)
+
+new("Frame", {Size = UDim2.new(1, -28, 0, 1), Position = UDim2.new(0, 14, 0, 38),
+    BackgroundColor3 = C.Stroke, BorderSizePixel = 0}, Card)
+
+local lines = {}
+for _, n in ipairs(NOTES) do table.insert(lines, "• " .. n) end
+new("TextLabel", {
+    Text = table.concat(lines, "\n"), Font = Enum.Font.Code, TextSize = 12, TextColor3 = C.Text,
+    TextXAlignment = Enum.TextXAlignment.Left, TextYAlignment = Enum.TextYAlignment.Top,
+    BackgroundTransparency = 1, Position = UDim2.new(0, 14, 0, 46), Size = UDim2.new(1, -28, 1, -96),
+}, Card)
+
+local GotIt = new("TextButton", {
+    Text = "Got it", Font = Enum.Font.GothamBold, TextSize = 12, TextColor3 = Color3.fromRGB(0, 0, 0),
+    BackgroundColor3 = C.White, AutoButtonColor = false, BorderSizePixel = 0,
+    Position = UDim2.new(0, 14, 1, -40), Size = UDim2.new(1, -28, 0, 30),
+}, Card)
+corner(8, GotIt)
+GotIt.MouseEnter:Connect(function() tween(GotIt, 0.15, {BackgroundColor3 = Color3.fromRGB(220, 220, 220)}) end)
+GotIt.MouseLeave:Connect(function() tween(GotIt, 0.15, {BackgroundColor3 = C.White}) end)
+GotIt.MouseButton1Click:Connect(function() Overlay.Visible = false end)
+
+-- "NEW" pill in the top bar (re-opens the notes)
+local NewBtn = new("TextButton", {
+    Text = "NEW", Font = Enum.Font.GothamBold, TextSize = 10, TextColor3 = C.White,
+    BackgroundColor3 = C.Card, AutoButtonColor = false, BorderSizePixel = 0,
+    Position = UDim2.new(1, -128, 0.5, -12), Size = UDim2.fromOffset(58, 24),
+}, Top)
+corner(12, NewBtn)
+stroke(C.White, 1, NewBtn, 0.5)
+NewBtn.MouseEnter:Connect(function() tween(NewBtn, 0.15, {BackgroundColor3 = C.Active}) end)
+NewBtn.MouseLeave:Connect(function() tween(NewBtn, 0.15, {BackgroundColor3 = C.Card}) end)
+NewBtn.MouseButton1Click:Connect(function() Overlay.Visible = not Overlay.Visible end)
+
+selectTab(1)
+
+----------------------------------------------------------------
+-- Drag (top bar)
+----------------------------------------------------------------
+do
+    local dragging, dragStart, startPos
+    Top.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging, dragStart, startPos = true, input.Position, Main.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then dragging = false end
+            end)
         end
     end)
-    bar.InputEnded:Connect(function(inp)
-        if inp.UserInputType == Enum.UserInputType.MouseButton1
-        or inp.UserInputType == Enum.UserInputType.Touch then
-            dragging = false
+    UserInputService.InputChanged:Connect(function(input)
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            local d = input.Position - dragStart
+            Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + d.X, startPos.Y.Scale, startPos.Y.Offset + d.Y)
         end
     end)
 end
 
-UserInputService.InputChanged:Connect(function(inp)
-    if not dragging then return end
-    if inp.UserInputType ~= Enum.UserInputType.MouseMovement
-    and inp.UserInputType ~= Enum.UserInputType.Touch then return end
-    local vp = getVP()
-    local delta = Vector2.new(inp.Position.X, inp.Position.Y) - dragStart
-    local newX = math.clamp(startPos.X + delta.X, 0, vp.X - Main.AbsoluteSize.X)
-    local newY = math.clamp(startPos.Y + delta.Y, 0, vp.Y - Main.AbsoluteSize.Y)
-    Main.Position = UDim2.new(0, newX, 0, newY)
-end)
-
-UserInputService.TouchMoved:Connect(function(touch)
-    if not dragging then return end
-    local vp = getVP()
-    local delta = Vector2.new(touch.Position.X, touch.Position.Y) - dragStart
-    local newX = math.clamp(startPos.X + delta.X, 0, vp.X - Main.AbsoluteSize.X)
-    local newY = math.clamp(startPos.Y + delta.Y, 0, vp.Y - Main.AbsoluteSize.Y)
-    Main.Position = UDim2.new(0, newX, 0, newY)
-end)
-UserInputService.TouchEnded:Connect(function()
-    dragging = false
-end)
-
--- ===== TITLE BAR =====
-local TitleBar = Instance.new("Frame")
-TitleBar.Size = UDim2.new(1, 0, 0, 30)
-TitleBar.BackgroundColor3 = C_TITLEBAR
-TitleBar.BorderSizePixel = 0
-TitleBar.Parent = Main
-MakeLine(TitleBar, UDim2.new(0,0,1,-1), true)
-
-attachDrag(TitleBar)
-
--- Traffic light dots
-local dotColors = {Color3.fromRGB(255,95,87), Color3.fromRGB(254,188,46), Color3.fromRGB(40,200,64)}
-for i, col in ipairs(dotColors) do
-    local d = Instance.new("Frame")
-    d.Size = UDim2.new(0, 9, 0, 9)
-    d.Position = UDim2.new(0, 6 + (i-1)*15, 0.5, -4)
-    d.BackgroundColor3 = col
-    d.BorderSizePixel = 0
-    d.Parent = TitleBar
-    MakeCorner(d, 10)
-end
-
--- Title text
-local TitleLbl = Instance.new("TextLabel")
-TitleLbl.Size = UDim2.new(1, -160, 1, 0)
-TitleLbl.Position = UDim2.new(0, 58, 0, 0)
-TitleLbl.BackgroundTransparency = 1
-TitleLbl.Text = "Official Yui Code  —  Script List"
-TitleLbl.TextColor3 = C_GOLD
-TitleLbl.Font = Enum.Font.Code
-TitleLbl.TextSize = 11
-TitleLbl.TextXAlignment = Enum.TextXAlignment.Left
-TitleLbl.Parent = TitleBar
-
--- Badge
-local Badge = Instance.new("TextLabel")
-Badge.Size = UDim2.new(0, 78, 0, 16)
-Badge.Position = UDim2.new(1, -116, 0.5, -8)
-Badge.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-Badge.Text = "PREMIUM v2"
-Badge.TextColor3 = C_GOLD
-Badge.Font = Enum.Font.Code
-Badge.TextSize = 8
-Badge.Parent = TitleBar
-MakeCorner(Badge, 10)
-MakeStroke(Badge, Color3.fromRGB(80, 65, 35), 1)
-
--- Minimize Button
-local MinBtn = Instance.new("TextButton")
-MinBtn.Size = UDim2.new(0, 22, 0, 16)
-MinBtn.Position = UDim2.new(1, -26, 0.5, -8)
-MinBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-MinBtn.Text = "−"
-MinBtn.TextColor3 = Color3.fromRGB(160, 160, 160)
-MinBtn.Font = Enum.Font.GothamBold
-MinBtn.TextSize = 13
-MinBtn.BorderSizePixel = 0
-MinBtn.AutoButtonColor = false
-MinBtn.Parent = TitleBar
-MakeCorner(MinBtn, 4)
-MakeStroke(MinBtn, C_BORDER, 1)
-
-local isHidden = false
-
-MinBtn.MouseEnter:Connect(function()
-    TweenService:Create(MinBtn, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(35,35,35), TextColor3 = Color3.fromRGB(220,220,220)}):Play()
-end)
-MinBtn.MouseLeave:Connect(function()
-    TweenService:Create(MinBtn, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(20,20,20), TextColor3 = Color3.fromRGB(160,160,160)}):Play()
-end)
+----------------------------------------------------------------
+-- Minimize / Close
+----------------------------------------------------------------
+local minimized = false
 MinBtn.MouseButton1Click:Connect(function()
-    isHidden = not isHidden
-    if isHidden then
-        MinBtn.Text = "+"
-        TweenService:Create(Main, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-            Size = UDim2.new(0, 480, 0, 30)
-        }):Play()
+    minimized = not minimized
+    MinBtn.Text = minimized and "+" or "–"
+    if minimized then
+        Body.Visible = false
+        tween(Main, 0.3, {Size = MINI})
     else
-        MinBtn.Text = "−"
-        TweenService:Create(Main, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-            Size = UDim2.new(0, 480, 0, 270)
-        }):Play()
+        tween(Main, 0.3, {Size = FULL})
+        task.delay(0.3, function() if not minimized then Body.Visible = true end end)
     end
 end)
 
--- ===== BODY =====
-local Body = Instance.new("Frame")
-Body.Size = UDim2.new(1, 0, 1, -48)
-Body.Position = UDim2.new(0, 0, 0, 30)
-Body.BackgroundTransparency = 1
-Body.BorderSizePixel = 0
-Body.Parent = Main
+CloseBtn.MouseButton1Click:Connect(function()
+    TweenService:Create(Main, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Size = UDim2.fromOffset(0, 0)}):Play()
+    task.wait(0.3)
+    Gui:Destroy()
+end)
 
--- ===== SIDEBAR =====
-local Sidebar = Instance.new("Frame")
-Sidebar.Size = UDim2.new(0, 155, 1, 0)
-Sidebar.BackgroundColor3 = C_PANEL
-Sidebar.BorderSizePixel = 0
-Sidebar.Parent = Body
-MakeLine(Sidebar, UDim2.new(1,-1,0,0), false)
+-- Open animation
+TweenService:Create(Main, TweenInfo.new(0.45, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = FULL}):Play()
 
--- Sidebar header
-local SBHead = Instance.new("TextLabel")
-SBHead.Size = UDim2.new(1, 0, 0, 22)
-SBHead.BackgroundTransparency = 1
-SBHead.Text = "  SCRIPTS"
-SBHead.TextColor3 = Color3.fromRGB(55, 55, 55)
-SBHead.Font = Enum.Font.Code
-SBHead.TextSize = 8
-SBHead.TextXAlignment = Enum.TextXAlignment.Left
-SBHead.Parent = Sidebar
-MakeLine(Sidebar, UDim2.new(0,0,0,22), true)
+----------------------------------------------------------------
+-- Join Yui's Discord Server (pill notification, bottom-right)
+----------------------------------------------------------------
+do
+    local TweenService = game:GetService("TweenService")
+    local Players = game:GetService("Players")
 
--- Sidebar scroll
-local SBScroll = Instance.new("ScrollingFrame")
-SBScroll.Size = UDim2.new(1, 0, 1, -23)
-SBScroll.Position = UDim2.new(0, 0, 0, 23)
-SBScroll.BackgroundTransparency = 1
-SBScroll.BorderSizePixel = 0
-SBScroll.ScrollBarThickness = 2
-SBScroll.ScrollBarImageColor3 = C_GOLD
-SBScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
-SBScroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
-SBScroll.Parent = Sidebar
+    local TITLE = "Join Yui's Discord Server"
+    local LINK = "https://discord.gg/3jzRWKak6V"
+    local SHORT = "discord.gg/3jzRWKak6V"
 
-local SBLayout = Instance.new("UIListLayout")
-SBLayout.FillDirection = Enum.FillDirection.Vertical
-SBLayout.SortOrder = Enum.SortOrder.LayoutOrder
-SBLayout.Parent = SBScroll
+    -- How far up from the bottom edge (raise this to sit higher above the jump button)
+    local BOTTOM_OFFSET = 100
 
--- ===== MAIN CONTENT =====
-local Content = Instance.new("Frame")
-Content.Size = UDim2.new(1, -155, 1, 0)
-Content.Position = UDim2.new(0, 155, 0, 0)
-Content.BackgroundColor3 = Color3.fromRGB(11, 11, 11)
-Content.BorderSizePixel = 0
-Content.Parent = Body
-
--- Content header
-local CHead = Instance.new("Frame")
-CHead.Size = UDim2.new(1, 0, 0, 28)
-CHead.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-CHead.BorderSizePixel = 0
-CHead.Parent = Content
-MakeLine(CHead, UDim2.new(0,0,1,-1), true)
-
-local TabNameLbl = Instance.new("TextLabel")
-TabNameLbl.Size = UDim2.new(0.65, 0, 1, 0)
-TabNameLbl.Position = UDim2.new(0, 10, 0, 0)
-TabNameLbl.BackgroundTransparency = 1
-TabNameLbl.Text = "Tab 1  —  Init"
-TabNameLbl.TextColor3 = C_GOLD
-TabNameLbl.Font = Enum.Font.Code
-TabNameLbl.TextSize = 10
-TabNameLbl.TextXAlignment = Enum.TextXAlignment.Left
-TabNameLbl.Parent = CHead
-
-local TabMetaLbl = Instance.new("TextLabel")
-TabMetaLbl.Size = UDim2.new(0.35, -10, 1, 0)
-TabMetaLbl.Position = UDim2.new(0.65, 0, 0, 0)
-TabMetaLbl.BackgroundTransparency = 1
-TabMetaLbl.Text = "lua  •  ready"
-TabMetaLbl.TextColor3 = C_DIM
-TabMetaLbl.Font = Enum.Font.Code
-TabMetaLbl.TextSize = 8
-TabMetaLbl.TextXAlignment = Enum.TextXAlignment.Right
-TabMetaLbl.Parent = CHead
-
--- Code box
-local CodeWrap = Instance.new("Frame")
-CodeWrap.Size = UDim2.new(1, -20, 1, -74)
-CodeWrap.Position = UDim2.new(0, 10, 0, 36)
-CodeWrap.BackgroundColor3 = C_CODEBG
-CodeWrap.BorderSizePixel = 0
-CodeWrap.Parent = Content
-MakeCorner(CodeWrap, 6)
-MakeStroke(CodeWrap, C_BORDER, 1)
-
-local CodeScroll = Instance.new("ScrollingFrame")
-CodeScroll.Size = UDim2.new(1, -6, 1, -6)
-CodeScroll.Position = UDim2.new(0, 3, 0, 3)
-CodeScroll.BackgroundTransparency = 1
-CodeScroll.BorderSizePixel = 0
-CodeScroll.ScrollBarThickness = 2
-CodeScroll.ScrollBarImageColor3 = C_GOLD
-CodeScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
-CodeScroll.AutomaticCanvasSize = Enum.AutomaticSize.Y
-CodeScroll.Parent = CodeWrap
-
-local CodeLbl = Instance.new("TextLabel")
-CodeLbl.Size = UDim2.new(1, -8, 0, 0)
-CodeLbl.AutomaticSize = Enum.AutomaticSize.Y
-CodeLbl.Position = UDim2.new(0, 4, 0, 4)
-CodeLbl.BackgroundTransparency = 1
-CodeLbl.Text = ""
-CodeLbl.TextColor3 = Color3.fromRGB(75, 75, 75)
-CodeLbl.Font = Enum.Font.Code
-CodeLbl.TextSize = 10
-CodeLbl.TextXAlignment = Enum.TextXAlignment.Left
-CodeLbl.TextYAlignment = Enum.TextYAlignment.Top
-CodeLbl.TextWrapped = false
-CodeLbl.Parent = CodeScroll
-
--- ===== BOTTOM BAR =====
-local BotBar = Instance.new("Frame")
-BotBar.Size = UDim2.new(1, 0, 0, 34)
-BotBar.Position = UDim2.new(0, 0, 1, -34)
-BotBar.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-BotBar.BorderSizePixel = 0
-BotBar.Parent = Content
-MakeLine(BotBar, UDim2.new(0,0,0,0), true)
-
-local HowTo = Instance.new("TextLabel")
-HowTo.Size = UDim2.new(1, -108, 1, 0)
-HowTo.Position = UDim2.new(0, 10, 0, 0)
-HowTo.BackgroundTransparency = 1
-HowTo.RichText = true
-HowTo.Text = '<font color="rgb(200,169,110)">HOW TO USE?</font> <font color="rgb(55,55,55)">SELECT THE TAB U WANT AND EXECUTE IT</font>'
-HowTo.Font = Enum.Font.Code
-HowTo.TextSize = 8
-HowTo.TextXAlignment = Enum.TextXAlignment.Left
-HowTo.TextColor3 = C_DIM
-HowTo.Parent = BotBar
-
-local ExecBtn = Instance.new("TextButton")
-ExecBtn.Size = UDim2.new(0, 88, 0, 22)
-ExecBtn.Position = UDim2.new(1, -96, 0.5, -11)
-ExecBtn.BackgroundColor3 = C_GOLD
-ExecBtn.Text = "EXECUTE"
-ExecBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
-ExecBtn.Font = Enum.Font.GothamBold
-ExecBtn.TextSize = 9
-ExecBtn.BorderSizePixel = 0
-ExecBtn.Parent = BotBar
-MakeCorner(ExecBtn, 5)
-
--- ===== STATUS BAR =====
-local StatBar = Instance.new("Frame")
-StatBar.Size = UDim2.new(1, 0, 0, 18)
-StatBar.Position = UDim2.new(0, 0, 1, -18)
-StatBar.BackgroundColor3 = Color3.fromRGB(8, 8, 8)
-StatBar.BorderSizePixel = 0
-StatBar.Parent = Main
-MakeLine(StatBar, UDim2.new(0,0,0,0), true)
-
-local StatDot = Instance.new("Frame")
-StatDot.Size = UDim2.new(0, 6, 0, 6)
-StatDot.Position = UDim2.new(0, 10, 0.5, -3)
-StatDot.BackgroundColor3 = C_GREEN
-StatDot.BorderSizePixel = 0
-StatDot.Parent = StatBar
-MakeCorner(StatDot, 10)
-
-local StatLbl = Instance.new("TextLabel")
-StatLbl.Size = UDim2.new(0.5, 0, 1, 0)
-StatLbl.Position = UDim2.new(0, 22, 0, 0)
-StatLbl.BackgroundTransparency = 1
-StatLbl.Text = "READY"
-StatLbl.TextColor3 = Color3.fromRGB(50, 50, 50)
-StatLbl.Font = Enum.Font.Code
-StatLbl.TextSize = 7
-StatLbl.TextXAlignment = Enum.TextXAlignment.Left
-StatLbl.Parent = StatBar
-
-local StatRight = Instance.new("TextLabel")
-StatRight.Size = UDim2.new(0.5, -10, 1, 0)
-StatRight.Position = UDim2.new(0.5, 0, 0, 0)
-StatRight.BackgroundTransparency = 1
-StatRight.Text = "Yui Script Engine  •  Lua 5.4"
-StatRight.TextColor3 = Color3.fromRGB(40, 40, 40)
-StatRight.Font = Enum.Font.Code
-StatRight.TextSize = 7
-StatRight.TextXAlignment = Enum.TextXAlignment.Right
-StatRight.Parent = StatBar
-
--- ===== FUNCTIONS =====
-local function SetStatus(txt, col)
-    StatLbl.Text = txt
-    StatDot.BackgroundColor3 = col
-end
-
-local function LoadTab(idx)
-    ActiveTab = idx
-    local t = Tabs[idx]
-    local glowColor = TabColors[idx]
-
-    TabNameLbl.Text = "Tab " .. idx .. "  —  " .. t.Name
-    TabNameLbl.TextColor3 = glowColor
-    TabMetaLbl.Text = "™  selected"
-    CodeLbl.Text = t.Code
-
-    for i, btn in ipairs(TabButtons) do
-        local isActive = (i == idx)
-        local col = TabColors[i]
-        local glowBg = Color3.fromRGB(
-            math.floor(col.R * 255 * 0.08),
-            math.floor(col.G * 255 * 0.08),
-            math.floor(col.B * 255 * 0.08)
-        )
-
-        if isActive then
-            TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = glowBg}):Play()
-        else
-            TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = C_PANEL}):Play()
-        end
-
-        local acc = btn:FindFirstChild("Accent")
-        acc.Visible = isActive
-        if isActive then
-            TweenService:Create(acc, TweenInfo.new(0.2), {BackgroundColor3 = col}):Play()
-        end
-
-        local lbl = btn:FindFirstChild("TabLabel")
-        TweenService:Create(lbl, TweenInfo.new(0.2), {
-            TextColor3 = isActive and col or C_DIM
-        }):Play()
-
-        local num = btn:FindFirstChild("Num")
-        TweenService:Create(num, TweenInfo.new(0.2), {
-            TextColor3 = isActive and col or Color3.fromRGB(60,60,60)
-        }):Play()
-
-        local ind = btn:FindFirstChild("Indicator")
-        TweenService:Create(ind, TweenInfo.new(0.2), {
-            BackgroundColor3 = isActive and col or Color3.fromRGB(35,35,35)
-        }):Play()
+    local function new(class, props, parent)
+        local o = Instance.new(class)
+        for k, v in pairs(props) do o[k] = v end
+        if parent then o.Parent = parent end
+        return o
     end
 
-    ExecBtn.BackgroundColor3 = glowColor
-    ExecBtn.Text = "EXECUTE"
-    SetStatus("READY", C_GREEN)
-end
+    local function getParent()
+        local ok, ui = pcall(function() return gethui and gethui() end)
+        if ok and ui then return ui end
+        local ok2, core = pcall(function() return game:GetService("CoreGui") end)
+        if ok2 and core then return core end
+        return Players.LocalPlayer:WaitForChild("PlayerGui")
+    end
 
--- ===== BUILD TABS =====
-for i, tab in ipairs(Tabs) do
-    local Btn = Instance.new("TextButton")
-    Btn.Name = "Tab"..i
-    Btn.Size = UDim2.new(1, 0, 0, 30)
-    Btn.BackgroundColor3 = i == 1 and C_TAB_ACT or C_PANEL
-    Btn.BorderSizePixel = 0
-    Btn.Text = ""
-    Btn.AutoButtonColor = false
-    Btn.LayoutOrder = i
-    Btn.Parent = SBScroll
+    local parent = getParent()
+    if parent:FindFirstChild("YuiDiscordNotif") then parent.YuiDiscordNotif:Destroy() end
 
-    -- Gold left accent
-    local Acc = Instance.new("Frame")
-    Acc.Name = "Accent"
-    Acc.Size = UDim2.new(0, 2, 1, 0)
-    Acc.BackgroundColor3 = C_GOLD
-    Acc.BorderSizePixel = 0
-    Acc.Visible = (i == 1)
-    Acc.Parent = Btn
+    local Gui = new("ScreenGui", {
+        Name = "YuiDiscordNotif",
+        ResetOnSpawn = false,
+        IgnoreGuiInset = true,
+        ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+    }, parent)
 
-    -- Number
-    local NumBg = Instance.new("Frame")
-    NumBg.Size = UDim2.new(0, 17, 0, 17)
-    NumBg.Position = UDim2.new(0, 9, 0.5, -8)
-    NumBg.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    NumBg.BorderSizePixel = 0
-    NumBg.Parent = Btn
-    MakeCorner(NumBg, 4)
-    MakeStroke(NumBg, C_BORDER, 1)
+    -- Pill (small)
+    local Pill = new("TextButton", {
+        Name = "Pill",
+        Text = "",
+        AutoButtonColor = false,
+        Size = UDim2.fromOffset(250, 54),
+        AnchorPoint = Vector2.new(1, 1),
+        Position = UDim2.new(1, 300, 1, -BOTTOM_OFFSET), -- starts off-screen (right)
+        BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+        BorderSizePixel = 0,
+    }, Gui)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, Pill)
 
-    local NumLbl = Instance.new("TextLabel")
-    NumLbl.Name = "Num"
-    NumLbl.Size = UDim2.new(1, 0, 1, 0)
-    NumLbl.BackgroundTransparency = 1
-    NumLbl.Text = tostring(i)
-    NumLbl.TextColor3 = i == 1 and C_GOLD or Color3.fromRGB(60,60,60)
-    NumLbl.Font = Enum.Font.Code
-    NumLbl.TextSize = 8
-    NumLbl.Parent = NumBg
+    -- Background gradient (dark navy -> purple -> navy)
+    new("UIGradient", {
+        Rotation = 20,
+        Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(28, 40, 66)),
+            ColorSequenceKeypoint.new(0.5, Color3.fromRGB(88, 50, 140)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(24, 32, 56)),
+        }),
+    }, Pill)
 
-    -- Label
-    local Lbl = Instance.new("TextLabel")
-    Lbl.Name = "TabLabel"
-    Lbl.Size = UDim2.new(1, -50, 1, 0)
-    Lbl.Position = UDim2.new(0, 32, 0, 0)
-    Lbl.BackgroundTransparency = 1
-    Lbl.Text = tab.Name:upper()
-    Lbl.TextColor3 = i == 1 and C_GOLD or C_DIM
-    Lbl.Font = Enum.Font.Code
-    Lbl.TextSize = 8
-    Lbl.TextXAlignment = Enum.TextXAlignment.Left
-    Lbl.Parent = Btn
+    -- Pill border
+    local pillStroke = new("UIStroke", {
+        Thickness = 1.5,
+        Color = Color3.fromRGB(255, 255, 255),
+        ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+    }, Pill)
+    new("UIGradient", {
+        Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(120, 190, 255)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(150, 110, 230)),
+        }),
+    }, pillStroke)
 
-    -- Indicator dot
-    local Ind = Instance.new("Frame")
-    Ind.Name = "Indicator"
-    Ind.Size = UDim2.new(0, 5, 0, 5)
-    Ind.Position = UDim2.new(1, -10, 0.5, -2)
-    Ind.BackgroundColor3 = i == 1 and C_GOLD or Color3.fromRGB(35,35,35)
-    Ind.BorderSizePixel = 0
-    Ind.Parent = Btn
-    MakeCorner(Ind, 10)
+    -- Icon circle with gradient ring
+    local Icon = new("Frame", {
+        Size = UDim2.fromOffset(38, 38),
+        Position = UDim2.new(0, 8, 0.5, -19),
+        BackgroundColor3 = Color3.fromRGB(14, 14, 18),
+        BorderSizePixel = 0,
+    }, Pill)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, Icon)
+    local ring = new("UIStroke", {Thickness = 2.5, Color = Color3.fromRGB(255, 255, 255)}, Icon)
+    new("UIGradient", {
+        Rotation = 45,
+        Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 120, 200)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 200, 255)),
+        }),
+    }, ring)
+    new("TextLabel", {
+        Text = "💵", TextSize = 18, Font = Enum.Font.GothamBold,
+        BackgroundTransparency = 1, Size = UDim2.new(1, 0, 1, 0),
+    }, Icon)
 
-    -- Divider
-    local Div = Instance.new("Frame")
-    Div.Size = UDim2.new(1, 0, 0, 1)
-    Div.Position = UDim2.new(0, 0, 1, -1)
-    Div.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    Div.BorderSizePixel = 0
-    Div.Parent = Btn
+    -- Green status dot
+    local Dot = new("Frame", {
+        Size = UDim2.fromOffset(7, 7),
+        Position = UDim2.new(0, 54, 0.5, -3),
+        BackgroundColor3 = Color3.fromRGB(110, 210, 140),
+        BorderSizePixel = 0,
+    }, Pill)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, Dot)
 
-    TabButtons[i] = Btn
+    -- Texts
+    local Title = new("TextLabel", {
+        Text = TITLE,
+        Font = Enum.Font.MontserratBold, TextSize = 13,
+        TextColor3 = Color3.fromRGB(245, 245, 255),
+        TextXAlignment = Enum.TextXAlignment.Left,
+        BackgroundTransparency = 1,
+        Position = UDim2.new(0, 68, 0, 9), Size = UDim2.new(1, -96, 0, 18),
+    }, Pill)
 
-    Btn.MouseEnter:Connect(function()
-        if i ~= ActiveTab then
-            TweenService:Create(Btn, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(18,18,18)}):Play()
-        end
+    local Sub = new("TextLabel", {
+        Text = SHORT,
+        Font = Enum.Font.Montserrat, TextSize = 11,
+        TextColor3 = Color3.fromRGB(185, 195, 235),
+        TextXAlignment = Enum.TextXAlignment.Left,
+        BackgroundTransparency = 1,
+        Position = UDim2.new(0, 68, 0, 28), Size = UDim2.new(1, -96, 0, 16),
+    }, Pill)
+
+    -- Close button
+    local Close = new("TextButton", {
+        Text = "×", Font = Enum.Font.GothamBold, TextSize = 16,
+        TextColor3 = Color3.fromRGB(200, 205, 235),
+        BackgroundTransparency = 1,
+        Size = UDim2.fromOffset(22, 22),
+        Position = UDim2.new(1, -30, 0.5, -11),
+    }, Pill)
+
+    -- Slide in
+    local SHOWN = UDim2.new(1, -14, 1, -BOTTOM_OFFSET)
+    local HIDDEN = UDim2.new(1, 300, 1, -BOTTOM_OFFSET)
+    TweenService:Create(Pill, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = SHOWN}):Play()
+
+    -- Hover scale effect
+    local scale = new("UIScale", {Scale = 1}, Pill)
+    Pill.MouseEnter:Connect(function()
+        TweenService:Create(scale, TweenInfo.new(0.15), {Scale = 1.04}):Play()
     end)
-    Btn.MouseLeave:Connect(function()
-        if i ~= ActiveTab then
-            TweenService:Create(Btn, TweenInfo.new(0.1), {BackgroundColor3 = C_PANEL}):Play()
-        end
+    Pill.MouseLeave:Connect(function()
+        TweenService:Create(scale, TweenInfo.new(0.15), {Scale = 1}):Play()
     end)
-    Btn.MouseButton1Click:Connect(function()
-        LoadTab(i)
+
+    -- Tap to copy invite link
+    local busy = false
+    Pill.MouseButton1Click:Connect(function()
+        if busy then return end
+        busy = true
+        local ok = pcall(function() setclipboard(LINK) end)
+        Title.Text = ok and "Link Copied!" or "Copy not supported"
+        Sub.Text = ok and "Paste it in your browser" or SHORT
+        task.wait(1.5)
+        Title.Text = TITLE
+        Sub.Text = SHORT
+        busy = false
+    end)
+
+    -- Close
+    Close.MouseButton1Click:Connect(function()
+        local t = TweenService:Create(Pill, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Position = HIDDEN})
+        t:Play()
+        t.Completed:Wait()
+        Gui:Destroy()
     end)
 end
-
--- Execute button logic
-ExecBtn.MouseButton1Click:Connect(function()
-    local t = Tabs[ActiveTab]
-    if t.Code == "" then
-        SetStatus("EMPTY TAB", C_DIM)
-        ExecBtn.Text = "EMPTY"
-        task.delay(1.5, function()
-            ExecBtn.BackgroundColor3 = TabColors[ActiveTab]
-            ExecBtn.Text = "EXECUTE"
-            SetStatus("READY", C_GREEN)
-        end)
-        return
-    end
-
-    SetStatus("EXECUTING", C_YELLOW)
-    ExecBtn.BackgroundColor3 = C_YELLOW
-    ExecBtn.Text = "..."
-
-    task.spawn(function()
-        local ok, err = pcall(function()
-            loadstring(t.Code)()
-        end)
-        if ok then
-            SetStatus("SUCCESS", C_GREEN)
-            ExecBtn.BackgroundColor3 = C_GREEN
-            ExecBtn.Text = "✓ DONE"
-        else
-            SetStatus("ERROR", Color3.fromRGB(220, 60, 60))
-            ExecBtn.BackgroundColor3 = Color3.fromRGB(220, 60, 60)
-            ExecBtn.Text = "✗ ERROR"
-            warn("[Yui] Execute error: " .. tostring(err))
-        end
-        task.delay(2, function()
-            ExecBtn.BackgroundColor3 = TabColors[ActiveTab]
-            ExecBtn.Text = "EXECUTE"
-            SetStatus("READY", C_GREEN)
-        end)
-    end)
-end)
-
-ExecBtn.MouseEnter:Connect(function()
-    if ExecBtn.Text == "EXECUTE" then
-        local c = TabColors[ActiveTab]
-        TweenService:Create(ExecBtn, TweenInfo.new(0.1), {
-            BackgroundColor3 = Color3.fromRGB(
-                math.min(255, math.floor(c.R*255*1.2)),
-                math.min(255, math.floor(c.G*255*1.2)),
-                math.min(255, math.floor(c.B*255*1.2))
-            )
-        }):Play()
-    end
-end)
-
-ExecBtn.MouseLeave:Connect(function()
-    if ExecBtn.Text == "EXECUTE" then
-        TweenService:Create(ExecBtn, TweenInfo.new(0.1), {BackgroundColor3 = TabColors[ActiveTab]}):Play()
-    end
-end)
-
--- Load first tab
-LoadTab(1)
-print("[Yui] UI Loaded!")
