@@ -20,8 +20,8 @@ local SCRIPTS = {
     {Name = "LoveHub", Desc = "Press Execute to load LoveHub.", Url = "https://raw.githubusercontent.com/MiniPibble/Hubu/refs/heads/main/Love"},
     {Name = "CursedHub", Desc = "Press Execute to load CursedHub.", Url = "https://raw.githubusercontent.com/MiniPibble/CursedHub/refs/heads/main/Bu"},
     {Name = "ExeCodeSniper", Desc = "Press Execute to load ExeCodeSniper.", Url = "https://raw.githubusercontent.com/MiniPibble/Execodesniper-/refs/heads/main/Ggwp"},
-    {Name = "Tab 6",  Desc = "Description for Tab 6.",  Url = "PUT_TAB_6_LINK_HERE"},
-    {Name = "Tab 7",  Desc = "Description for Tab 7.",  Url = "PUT_TAB_7_LINK_HERE"},
+    {Name = "BellumHub", Desc = "Press Execute to load BellumHub.", Url = "https://raw.githubusercontent.com/MiniPibble/Naysz/refs/heads/main/BellumHub.lua"},
+    {Name = "AuroraHub", Desc = "Press Execute to load AuroraHub.", Url = "https://raw.githubusercontent.com/MiniPibble/Mengmengputi/refs/heads/main/Mml"},
     {Name = "Tab 8",  Desc = "Description for Tab 8.",  Url = "PUT_TAB_8_LINK_HERE"},
     {Name = "Tab 9",  Desc = "Description for Tab 9.",  Url = "PUT_TAB_9_LINK_HERE"},
     {Name = "Tab 10", Desc = "Description for Tab 10.", Url = "PUT_TAB_10_LINK_HERE"},
@@ -82,6 +82,106 @@ end
 
 local parent = getParent()
 if parent:FindFirstChild("YuiCodeScriptList") then parent.YuiCodeScriptList:Destroy() end
+
+----------------------------------------------------------------
+-- Loader intro: "Subscribe To OFFICIAL YUII"
+----------------------------------------------------------------
+do
+    local LOADER_TITLE = "Subscribe To OFFICIAL YUII"
+    local LOADER_NAME  = "YT: OFFICIAL_YUII"
+    local LOADER_IMAGE = "rbxassetid://129346791031417"
+    local KEYFRAMES = {{0.25, 10}, {0.25, 30}, {0.25, 60}, {0.25, 100}} -- {wait, percent}
+    local COL = {
+        Main = Color3.fromRGB(0, 0, 0),
+        Topic = Color3.fromRGB(200, 200, 200),
+        Title = Color3.fromRGB(255, 255, 255),
+        Bar = Color3.fromRGB(40, 40, 40),
+        Splash = Color3.fromRGB(130, 36, 212),
+    }
+
+    local function tw(o, t, props)
+        TweenService:Create(o, TweenInfo.new(t, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), props):Play()
+    end
+    local function mk(class, props)
+        local o = Instance.new(class)
+        local par
+        for k, v in pairs(props) do
+            if k == "Parent" then par = v else o[k] = v end
+        end
+        o.Parent = par
+        return o
+    end
+    local function rc(r, p) local c = Instance.new("UICorner"); c.CornerRadius = UDim.new(0, r); c.Parent = p end
+
+    local sg = mk("ScreenGui", {Name = "YuiLoader", ResetOnSpawn = false, IgnoreGuiInset = true, Parent = parent})
+
+    local box = mk("Frame", {
+        Name = "Main", Parent = sg, BackgroundColor3 = COL.Main, BorderSizePixel = 0, ClipsDescendants = true,
+        Position = UDim2.new(0.5, 0, 0.5, 0), AnchorPoint = Vector2.new(0.5, 0.5), Size = UDim2.new(0, 0, 0, 0),
+    })
+    rc(12, box)
+
+    local avatar = mk("ImageLabel", {
+        Name = "UserImage", Parent = box, BackgroundTransparency = 1, Image = LOADER_IMAGE,
+        Position = UDim2.new(0, 15, 0, 10), Size = UDim2.new(0, 50, 0, 50),
+    })
+    rc(25, avatar)
+
+    mk("TextLabel", {
+        Name = "UserName", Parent = box, BackgroundTransparency = 1, Text = LOADER_NAME,
+        Position = UDim2.new(0, 75, 0, 10), Size = UDim2.new(0, 200, 0, 50),
+        Font = Enum.Font.GothamBold, TextColor3 = COL.Title, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left,
+    })
+
+    local topLbl = mk("TextLabel", {
+        Name = "Top", Parent = box, TextTransparency = 1, BackgroundTransparency = 1,
+        Position = UDim2.new(0, 30, 0, 70), Size = UDim2.new(0, 301, 0, 20),
+        Font = Enum.Font.Gotham, Text = "Loader", TextColor3 = COL.Topic, TextSize = 10,
+        TextXAlignment = Enum.TextXAlignment.Left,
+    })
+    local titleLbl = mk("TextLabel", {
+        Name = "Title", Parent = box, TextTransparency = 1, BackgroundTransparency = 1,
+        Position = UDim2.new(0, 30, 0, 90), Size = UDim2.new(0, 301, 0, 46),
+        Font = Enum.Font.Gotham, RichText = true, Text = "<b>" .. LOADER_TITLE .. "</b>",
+        TextColor3 = COL.Title, TextSize = 14, TextXAlignment = Enum.TextXAlignment.Left,
+    })
+    local barBg = mk("Frame", {
+        Name = "BG", Parent = box, AnchorPoint = Vector2.new(0.5, 0), BackgroundTransparency = 1,
+        BackgroundColor3 = COL.Bar, BorderSizePixel = 0,
+        Position = UDim2.new(0.5, 0, 0, 70), Size = UDim2.new(0.85, 0, 0, 24),
+    })
+    rc(8, barBg)
+    local bar = mk("Frame", {
+        Name = "Progress", Parent = barBg, BackgroundColor3 = COL.Splash, BackgroundTransparency = 1,
+        BorderSizePixel = 0, Size = UDim2.new(0, 0, 0, 24),
+    })
+    rc(8, bar)
+
+    -- open
+    tw(box, 0.25, {Size = UDim2.new(0, 346, 0, 121)})
+    task.wait()
+    tw(topLbl, 0.5, {TextTransparency = 0})
+    tw(titleLbl, 0.5, {TextTransparency = 0})
+    tw(barBg, 0.5, {BackgroundTransparency = 0})
+    tw(bar, 0.5, {BackgroundTransparency = 0})
+
+    -- progress
+    for _, kf in ipairs(KEYFRAMES) do
+        task.wait(kf[1])
+        tw(bar, 0.5, {Size = UDim2.new(kf[2] / 100, 0, 0, 24)})
+    end
+    tw(bar, 0.5, {Size = UDim2.new(1, 0, 0, 24)})
+
+    -- close
+    tw(topLbl, 0.5, {TextTransparency = 1})
+    tw(titleLbl, 0.5, {TextTransparency = 1})
+    tw(barBg, 0.5, {BackgroundTransparency = 1})
+    tw(bar, 0.5, {BackgroundTransparency = 1})
+    task.wait(0.5)
+    tw(box, 0.25, {Size = UDim2.new(0, 0, 0, 0)})
+    task.wait(0.25)
+    sg:Destroy()
+end
 
 local Gui = new("ScreenGui", {
     Name = "YuiCodeScriptList", ResetOnSpawn = false,
