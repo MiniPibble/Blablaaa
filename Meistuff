@@ -22,8 +22,8 @@ local SCRIPTS = {
     {Name = "ExeCodeSniper", Desc = "Press Execute to load ExeCodeSniper.", Url = "https://raw.githubusercontent.com/MiniPibble/Execodesniper-/refs/heads/main/Ggwp"},
     {Name = "BellumHub", Desc = "Press Execute to load BellumHub.", Url = "https://raw.githubusercontent.com/MiniPibble/Naysz/refs/heads/main/BellumHub.lua"},
     {Name = "AuroraHub", Desc = "Press Execute to load AuroraHub.", Url = "https://raw.githubusercontent.com/MiniPibble/Mengmengputi/refs/heads/main/Mml"},
-    {Name = "Tab 8",  Desc = "Description for Tab 8.",  Url = "PUT_TAB_8_LINK_HERE"},
-    {Name = "Tab 9",  Desc = "Description for Tab 9.",  Url = "PUT_TAB_9_LINK_HERE"},
+    {Name = "NovaHub", Desc = "Press Execute to load NovaHub.", Url = "https://raw.githubusercontent.com/MiniPibble/NovaHub/refs/heads/main/NovaHub.lua"},
+    {Name = "GalaxyHub", Desc = "Press Execute to load GalaxyHub.", Url = "https://raw.githubusercontent.com/MiniPibble/GalaxyHub/refs/heads/main/CodeSniper"},
     {Name = "Tab 10", Desc = "Description for Tab 10.", Url = "PUT_TAB_10_LINK_HERE"},
 }
 --------------------------------------------------------------------
